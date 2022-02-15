@@ -12,13 +12,11 @@ Personally, both of us listen to our music primarily on Spotify. In fact, more t
 
 ## Typicality of tracks 
 ### Typical Tracks
-Typical songs include worship music songs
+Typical songs include worship music songs:
 1. Christ Our Hope in Life and Death
 2. Still / PEACE
 3. Turn Your Eyes
 
 ### Atypical Tracks
-1. Bie Wei Wo Hao (Mandarin Song)
-  - This song has a very Cantonese style which is different energy and mood
-3. One Pursuit
-  - This song is written and produced by a local Singaporean writer as opposed to most of the other worship songs written and produced abroad in Europe, US and Australia.
+1. Bie Wei Wo Hao (Mandarin Song): This song has a very Cantonese style which is different energy and mood
+2. One Pursuit: This song is written and produced by a local Singaporean writer as opposed to most of the other worship songs written and produced abroad in Europe, US and Australia.
