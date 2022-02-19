@@ -20,3 +20,11 @@ Typical songs include worship music songs:
 ### Atypical Tracks
 1. Bie Wei Wo Hao (Mandarin Song): This song has a very Cantonese style which is different energy and mood
 2. One Pursuit: This song is written and produced by a local Singaporean writer as opposed to most of the other worship songs written and produced abroad in Europe, US and Australia.
+
+## Visualisation
+![H M Comp Music Export](https://user-images.githubusercontent.com/40192780/154821752-2290e61d-200b-40e1-9fca-0321b26b5a2c.png)
+Notable Observations:
+1. It can be observed that the valence of the songs for both mine and Megan's songs have the full spectrum.
+2. However, it is interesting to note that Megan's of instrumentalness is varied and tends to be higher for songs with lower valence values
+3. In my case, it can be observed that the instrumentalness is extremely low for all songs except one song, which is an outlier that is written in the minor key (red points on the graph).
+4. Of note, quite a few of Megan's outliers are actually also written in the minor key, which aligns with the theory that minor keys are less mainstream and tend to have more unique characteristics.
