@@ -19,13 +19,21 @@ sihan_songs <- get_my_top_artists_or_tracks(type = 'tracks',
                              time_range = 'long_term', 
                              limit = 50)
 sihan_song_features <- get_track_audio_features(sihan_songs$id)
-sihan_song_features = sihan_song_features %>%
+sihan_song_features <- sihan_song_features %>%
   mutate(listener="Si Han")
-sihan_song_features
+sihan_song_features_combined <- inner_join(sihan_songs, sihan_song_features, by="id")
+typeof(sihan_song_features)
+typeof(sihan_song_features_combined)
+ncol(sihan_song_features_combined)
+
+drop <- c("album.images","album.available_markets", "album.artists", "available_markets", "artists")
+sihan_song_features_combined <- sihan_song_features_combined[,!(names(sihan_song_features_combined) %in% drop)]
+
+ncol(sihan_song_features_combined)
 ```
 
 ```{r}
-write.csv(sihan_song_features,"./sihan.csv", row.names = FALSE)
+write.csv(sihan_song_features_combined,"./sihan.csv", row.names = FALSE)
 ```
 
 

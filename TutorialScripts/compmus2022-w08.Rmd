@@ -80,7 +80,7 @@ I've added labels, a simpler theme, and a scientific colour scheme to make the p
 
 ```{r}
 wood %>%
-  mutate(pitches = map(pitches, compmus_normalise, "euclidean")) %>%
+  mutate(pitches = map(pitches, compmus_normalise, "chebyshev")) %>%
   compmus_gather_chroma() %>% 
   ggplot(
     aes(
