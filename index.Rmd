@@ -1,0 +1,37 @@
+---
+title: "A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    theme: yeti
+---
+
+```{r setup, include=FALSE}
+library(flexdashboard)
+```
+
+
+### Chart A
+
+```{r}
+
+```
+
+*** 
+
+Hello World
+
+
+
+### Chart B
+
+```{r}
+
+```
+
+### Chart C
+
+```{r}
+
+```
+

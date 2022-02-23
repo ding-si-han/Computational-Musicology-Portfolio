@@ -1,0 +1,28 @@
+---
+title: "R Music Comparison Analysis"
+output: html_notebook
+---
+
+Join the Two Dataframes
+
+```{r}
+sihan_df <- read.csv(file="sihan.csv")
+megan_df <- read.csv(file="megan.csv")
+
+combined_df <- rbind(sihan_df, megan_df)
+combined_df$mode <- as.factor(combined_df$mode)
+
+summary(combined_df)
+```
+
+Plot Values
+
+```{r}
+ggplot(combined_df, aes(valence, instrumentalness, color=mode)) +
+  geom_point() +
+  facet_wrap(~listener) +
+  scale_color_manual(labels = c("Minor", "Major"), values = c("red", "blue")) 
+```
+
+
+
