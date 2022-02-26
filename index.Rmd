@@ -1,5 +1,5 @@
 ---
-title: "A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs"
+title: "Relationships Explored: A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs (and its reflection of our personalities)"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
@@ -8,30 +8,172 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+library(ggrepel)
+library(ggthemes)
+library(tidyverse)
+library(compmus)
+library(gridExtra)
+
+sihan_df <- read.csv(file="./data/sihan.csv")
+megan_df <- read.csv(file="./data/megan.csv")
+
+combined_df <- rbind(sihan_df, megan_df)
+combined_df$mode <- as.factor(combined_df$mode)
+
+summary(combined_df)
 ```
 
+### A tale of Two Individuals
 
-### Chart A
+**The Story**
+
+Someone once said music is the way to speak to the soul. Yet, what makes music so intriguing is how personal each individual's choices are. Some may like rock Music while others may prefer classical music. Is this just a personal preference, are does that indicate more than meets the eye about an individual's personality. To find out, I will be comparing my girlfriend, Megan, and my top songs to examine what are some of the similarities and differences. As people with similar personalities yet different hobbies and interests, it will be intriguing to examine where our music choices converge and elements where they differ. Hence, the key research question that I will seek to address is to what extent are our musical preferences different and whether it encapsulate the differences in our personalities and lifestyle.
+
+Megan prefers more of lo-fi, indie music, especially those with chill vibes. I often listen to emotional and worshipful music. Hence, it will be intersting to especially examine these features and explore how this reveals more about each of us individuals.
+
+1. Danceability
+2. Valence
+3. Speechiness
+4. Instrumentalness 
+
+Personally, both of us listen to our music primarily on Spotify. In fact, more than 90% of the music that we listen to is on Spotify itself. As a result, this would make the Spotify API and these playlists pretty accurate and representative of our musical tastes. Interestingly, Megan listens to music while doing work typically, while I listen to most of my music during leisure. Hence, this will also open the door to examining if the features of our music can reveal the different motivations for listening to music.
+
+**Megan's Songs**
+
+*Typical Songs:*
+
+1. Black bear
+2. Maybe
+3. Carry you
+
+The typical songs found in Megan's playlist are indie folk with slow vibes to the songs.
+
+*Atypical Songs*
+
+1. We’re good: 
+
+We're good is a song that is unlike the rest of the songs, with louder, faster and more beats to it.
+
+
+**Si Han's Songs**
+
+*Typical Songs:*
+
+1. Yet Not I but Through Christ in Me
+2. Ta Shuo
+
+Typical songs in the playlist would include Christian Worship songs and Mandopop songs, which comprise approximately 50% of the playlist each.
+
+*Atypical Songs*
+
+1. Light Rain
+
+Light rain is an ambient sound track of rain drops that are useful for falling asleep. This will be an interesting track to analyse due to the nature of the sounds and there being no distinct pitch of the sounds.
+
+
+
+
+
+
+
+
+### Outlier Anaylsis of a Rain Song Without a Melody
 
 ```{r}
 
+light_rain = "439tGS9rVbyTjj5SmneD56"
+yet_not_i = "439tGS9rVbyTjj5SmneD56"
+shuo_hao_bu_ku = "56wVfJKtnwlSZtC4NVgIrf"
+
+wood <-
+  get_tidy_audio_analysis(light_rain) %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+
+chromagram <- wood %>%
+  mutate(pitches = map(pitches, compmus_normalise, "chebyshev")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c()
+```
+
+```{r}
+## The Tallis Scholars
+tallis <-
+  get_tidy_audio_analysis("3BA4y1ENVDOeT7XP82sk09") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+## La Chapelle Royale
+chapelle <-
+  get_tidy_audio_analysis("3BA4y1ENVDOeT7XP82sk09") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+
+dtw <- compmus_long_distance(
+  tallis %>% mutate(pitches = map(pitches, compmus_normalise, "euclidean")),
+  chapelle %>% mutate(pitches = map(pitches, compmus_normalise, "euclidean")),
+  feature = pitches,
+  method = "euclidean"
+) %>%
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = xduration,
+      y = ystart + yduration / 2,
+      height = yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_equal() +
+  labs(x = "Light Rain", y = "Light Rain") +
+  theme_minimal() +
+  scale_fill_viridis_c(guide = NULL)
+
+grid.arrange(chromagram, dtw, ncol = 2) 
+```
+
+***
+
+The Rain Song is one of the interesting audio tracks in the list of songs for the reason that it is the only one without any melody or pitch. That being said, it is quite interesting to observe that the chromagram displays the sounds predominantly at the C pitch. This is likely to be less of an intentional feature, and more of a feature of the frequency of the rain drops corresponding to this pitch.
+
+The Dynamic Time Wrapping also verifies sheds insight into the fact that there are no significant dynamics in the audio track. Instead, it is fairly constant and monotonous, with the exception of the bright line at 140 seconds, which corresponds to a period with a bit more fluctuations in the intensity of rain.
+
+
+
+
+
+### Discussion: Positivity and soulfulness, can these be musically quantified?
+
+```{r}
+ggplot(combined_df, aes(valence, instrumentalness, color=mode)) +
+  geom_point() +
+  facet_wrap(~listener) +
+  scale_color_manual(labels = c("Minor", "Major"), values = c("red", "blue")) +
+# geom_text(aes(x=0.14, label=ifelse((instrumentalness>0.5),as.character(name),'')))
+  geom_text_repel(aes(label=ifelse((instrumentalness>0.85),as.character(name),''))) 
+# theme_economist()
 ```
 
 *** 
 
-Hello World
+Here, in the area of valence, we observe that the range of songs span across the whole spectrum to up to 0.8, while mine ranges up to 0.5. This is actually quite an accrurate reflection of our personalities, Megan being an upbeat and cheerful individual, while I am quite a reflective especially with regard to music, which helps to unwind my thoughts and feelings.
 
+What is extremely insightful is also the range of the instrumentalness of the songs. Megan's songs again span the whole spectrum, with one significant song being an outlier from the rest: Hollywood. The wide range of instrumentalness reflects that the types of songs she listens to contains both those with voices and those without. This diversity is something that can be contrasted against my songs, which are very low on instrumentalness. This is in line with the genres that I listen to: worship and mandopop songs, which both comes with vocals inside typically.
 
+One exception to this is the song Light Rain, which is a audio track of rain songs I listen to to fall asleep. Here, we can clearly tell the Spotify API was spot on to indicate a score of near 1.0 on instrumentalness, given that this track has absolutely no vocals inside.
 
-### Chart B
-
-```{r}
-
-```
-
-### Chart C
-
-```{r}
-
-```
 

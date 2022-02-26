@@ -61,8 +61,8 @@ Let's pull down the analysis of a recording of Steve Reich's 'Music for Pieces o
 Spotify segments have a lot of information inside them, but this week, we'll focus just on `start`, `duration`, and `pitches`: the three tools we need to make a chromagram.
 
 ```{r}
-wood <-
-  get_tidy_audio_analysis("6IQILcYkN2S2eSu5IHoPEH") %>%
+rain <-
+  get_tidy_audio_analysis("3BA4y1ENVDOeT7XP82sk09") %>%
   select(segments) %>%
   unnest(segments) %>%
   select(start, duration, pitches)
@@ -79,7 +79,31 @@ Finally we can plot, but beware that ggplot *centres* each tile on the *x* or *y
 I've added labels, a simpler theme, and a scientific colour scheme to make the plot look a little nicer.
 
 ```{r}
-wood %>%
+rain %>%
+  mutate(pitches = map(pitches, compmus_normalise, "chebyshev")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c()
+```
+
+```{r}
+rain <-
+  get_tidy_audio_analysis("439tGS9rVbyTjj5SmneD56") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+
+rain %>%
   mutate(pitches = map(pitches, compmus_normalise, "chebyshev")) %>%
   compmus_gather_chroma() %>% 
   ggplot(
