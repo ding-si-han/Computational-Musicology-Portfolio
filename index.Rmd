@@ -4,7 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: yeti
-    self_contained: false
+    
 ---
 
 ```{r setup, include=FALSE}
@@ -22,12 +22,24 @@ combined_df <- rbind(sihan_df, megan_df)
 combined_df$mode <- as.factor(combined_df$mode)
 
 summary(combined_df)
+
+
 ```
 
-### A Tale of Two Individuals
+### Is there such a thing as work-from-home music: A dive into **Carry You**
 ```{r}
+
+# Megan's Songs
+song_black_bear <- "2BuMmK2Yguu6vQf1PJ2xQu"
+song_maybe <- "5tOUTNlLFd5u5xPt3unOVp"
+song_carry_you <- "0u4rkpmNtgcFxYHepnVF4v"
+
+# Si Han's Songs
+song_yet_not_i <- "439tGS9rVbyTjj5SmneD56"
+song_ta_shuo <- "632VyMrvhsHIsO4zq9khts"
+
 bzt <-
-  get_tidy_audio_analysis("5ZLkc5RY1NM4FtGWEd6HOE") %>% # Change URI.
+  get_tidy_audio_analysis(song_carry_you) %>% # Change URI.
   compmus_align(bars, segments) %>%                     # Change `bars`
   select(bars) %>%                                      #   in all three
   unnest(bars) %>%                                      #   of these lines.
@@ -62,7 +74,16 @@ bzt %>%
   theme_classic()
 ```
 
-### A Tale of Two Individuals
+***
+
+Carry You is by one of Megan's favourite artists Novo Amor and for good reason. This song Carry You displays dreamy vibes that builds into a hopeful crescendo towards the end of the song. The start is marked by a metallic ring which dies down, and may be reflected in the yellow fade from the first 20 seconds in the seventh dimension. Of note, this is followed with a flatness represented by the third dimension between 30s to 45s. 
+
+The song then builds up before fading, which is depicted in the 1st dimension which represents loudness. This wave like fluctuation between 50s to 140s creates an air of floatiness and creates the ideas of possibilities. This then builds to a sudden high pulsating volumes at 150s to 160s which uplifts the listeners and sends hopes the our hearts. This high volumes then sustains to build the positivity within the listen before a gentle slow and fade away. 
+
+This light yet uplifting song is perfect for a study or work session, typifying a song that would pair well with Megan's typical routines at work. For a listener that is at the stage of working life, and especially work from home, Novo Amor's Carry You brilliantly sings a encouraging tone to forge ahead with a day's worth of work
+
+
+### A tale of **two individuals**
 
 **The Story**
 
@@ -118,7 +139,7 @@ Insert embedded playlist here (having issues with rendering the playlist in the 
 
 
 
-### Outlier Anaylsis of a Rain Song Without a Melody
+### Why a boring song exists: analysis of a **strange outlier**
 
 ```{r}
 
@@ -193,11 +214,13 @@ The Rain Song is one of the interesting audio tracks in the list of songs for th
 
 The Dynamic Time Wrapping also sheds insight into the fact that there are no significant dynamics in the audio track. Instead, it is fairly constant and monotonous, with the exception of the bright line at 140 seconds, which corresponds to a period with a bit more fluctuations in the intensity of rain.
 
+This outlier song is a cool find within the haystack of music and one that is unusual not only to my playlist, yet most spotify songs. However, it brings out the fact that Spotify can be a space not only for listening to music, but even routines such as sounds to fall alseep to, as used in my case.
 
 
 
 
-### Discussion: Positivity and soulfulness, can these be musically quantified?
+
+### Positivity and soulfulness, can these be **musically quantified**?
 
 ```{r}
 ggplot(combined_df, aes(valence, instrumentalness, color=mode)) +
