@@ -74,6 +74,14 @@ disney_hits <- get_playlist_audio_features("", "37i9dQZF1DX8C9xQcOrE6T")
 ```
 
 ```{r}
+top_100_songs <- get_playlist_audio_features("", "37i9dQZF1EUMDoJuT8yJsl")
+```
+```{r}
+top_100_songs <- get_playlist_audio_features("d4fj6y95an7vjq9355u0pep1l", "37i9dQZF1EUMDoJuT8yJsl")
+```
+
+
+```{r}
 ggplot(disney_hits, aes(tempo, valence, label = track.name)) + 
   geom_point() +
   geom_text(aes(label=ifelse(track.name=="We Don't Talk About Bruno",as.character(track.name),'')),hjust=0,vjust=0)

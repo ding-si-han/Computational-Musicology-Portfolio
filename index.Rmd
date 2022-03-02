@@ -4,6 +4,7 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: yeti
+    self_contained: false
 ---
 
 ```{r setup, include=FALSE}
@@ -23,7 +24,7 @@ combined_df$mode <- as.factor(combined_df$mode)
 summary(combined_df)
 ```
 
-### A tale of Two Individuals
+### A Tale of Two Individuals
 
 **The Story**
 
@@ -71,7 +72,9 @@ Typical songs in the playlist would include Christian Worship songs and Mandopop
 Light rain is an ambient sound track of rain drops that are useful for falling asleep. This will be an interesting track to analyse due to the nature of the sounds and there being no distinct pitch of the sounds.
 
 
+***
 
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0dvRhGMEoCG9s8WA3ATLYd?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 
 
@@ -150,7 +153,7 @@ grid.arrange(chromagram, dtw, ncol = 2)
 
 The Rain Song is one of the interesting audio tracks in the list of songs for the reason that it is the only one without any melody or pitch. That being said, it is quite interesting to observe that the chromagram displays the sounds predominantly at the C pitch. This is likely to be less of an intentional feature, and more of a feature of the frequency of the rain drops corresponding to this pitch.
 
-The Dynamic Time Wrapping also verifies sheds insight into the fact that there are no significant dynamics in the audio track. Instead, it is fairly constant and monotonous, with the exception of the bright line at 140 seconds, which corresponds to a period with a bit more fluctuations in the intensity of rain.
+The Dynamic Time Wrapping also sheds insight into the fact that there are no significant dynamics in the audio track. Instead, it is fairly constant and monotonous, with the exception of the bright line at 140 seconds, which corresponds to a period with a bit more fluctuations in the intensity of rain.
 
 
 
