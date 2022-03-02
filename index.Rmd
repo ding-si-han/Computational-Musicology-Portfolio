@@ -25,6 +25,44 @@ summary(combined_df)
 ```
 
 ### A Tale of Two Individuals
+```{r}
+bzt <-
+  get_tidy_audio_analysis("5ZLkc5RY1NM4FtGWEd6HOE") %>% # Change URI.
+  compmus_align(bars, segments) %>%                     # Change `bars`
+  select(bars) %>%                                      #   in all three
+  unnest(bars) %>%                                      #   of these lines.
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  )
+
+bzt %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic()
+```
+
+### A Tale of Two Individuals
 
 **The Story**
 
@@ -43,15 +81,15 @@ Personally, both of us listen to our music primarily on Spotify. In fact, more t
 
 *Typical Songs:*
 
-1. [Black bear]()
-2. [Maybe]()
-3. [Carry you]()
+1. [Black bear](https://open.spotify.com/track/2BuMmK2Yguu6vQf1PJ2xQu?si=b0a95a9035b64ca4)
+2. [Maybe](https://open.spotify.com/track/5tOUTNlLFd5u5xPt3unOVp?si=449cf9c5ff244d50)
+3. [Carry you](https://open.spotify.com/track/0u4rkpmNtgcFxYHepnVF4v?si=08bfe49d1774442e)
 
 The typical songs found in Megan's playlist are indie folk with slow vibes to the songs.
 
 *Atypical Songs*
 
-1. [We’re good]()
+1. [We’re good](https://open.spotify.com/track/1diS6nkxMQc3wwC4G1j0bh?si=f426a1a347e5402a)
 
 We're good is a song that is unlike the rest of the songs, with louder, faster and more beats to it.
 
@@ -61,7 +99,7 @@ We're good is a song that is unlike the rest of the songs, with louder, faster a
 *Typical Songs:*
 
 1. [Yet Not I but Through Christ in Me](https://open.spotify.com/track/439tGS9rVbyTjj5SmneD56?si=ee649e2657664910)
-2. [Ta Shuo]()
+2. [Ta Shuo](https://open.spotify.com/track/632VyMrvhsHIsO4zq9khts?si=bb87253cfc654d1b)
 
 Typical songs in the playlist would include Christian Worship songs and Mandopop songs, which comprise approximately 50% of the playlist each.
 
@@ -74,7 +112,7 @@ Light rain is an ambient sound track of rain drops that are useful for falling a
 
 ***
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0dvRhGMEoCG9s8WA3ATLYd?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+Insert embedded playlist here (having issues with rendering the playlist in the iFrame)
 
 
 
