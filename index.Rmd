@@ -31,6 +31,8 @@ library(ggthemes)
 library(tidyverse)
 library(compmus)
 library(gridExtra)
+library(spotifyr)
+library(plotly)
 
 sihan_df <- read.csv(file="./data/sihan.csv")
 megan_df <- read.csv(file="./data/megan.csv")
