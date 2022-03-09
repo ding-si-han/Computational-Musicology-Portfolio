@@ -5,7 +5,6 @@ output:
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: journal
-    self_contained: false
 ---
 
 
@@ -169,11 +168,11 @@ twenty_five %>%
 
 Cornerstone is a classic Christian Worship song that reflects a very typical chord progression based around 4 chords. C major, A minor, F major and G major. It is very interesting to observe the chordogram as it can be observed that the song has 5 main sections. The first sections is up til 115 seconds and is marked by a dominant region in the middle of the y-axis signifying the main chord progression that runs through the song. 
 
-However, what is very interesting is the varying degrees of yellow in the rest of the chords for the duration of the song. The first section is marked by a quite a significant shade of yellow. This then fades from 115 to 230 seconds. This is because whilst both the first and second section includes the verse and chorus, the second region builds and incoporates more instruments, especially the electric guitar filler lines which are not in the chord progression, thereby dilute the intensity of the chords.
+However, what is very interesting is the varying degrees of yellow in the rest of the chords for the duration of the song. The first section is marked by a quite a significant shade of yellow. This then fades from 115 to 230 seconds. This is because whilst both the first and second section includes the verse and chorus, the second region builds and incoporates more instruments, especially the electric guitar filler lines which are not in the chord progression, thereby diluting the intensity of the chords.
 
-The song then falls to a solemn reflective mood, culminating at 270 to 280 seconds, where we hear most of the instrument fades out except the C major chord holding. This is reflected in the strong blue shade in this region, where the chord progression comes out stronger due to the other instrument fading. As the song builds again from 330 to 390 seconds, the yellowness fades again similarly to the second region. The song then finally ends with the C major chord being held again, explaining the strong yellow regions for the other chords. 
+The song then falls to a solemn reflective mood, culminating at 270 to 280 seconds, where we hear most of the instrument fades out except the C major chord holding. This is reflected in the strong blue shade in this region, where the chord progression comes out stronger due to the other instrument fading. As the song builds again from 330 to 390 seconds, the yellowness fades again, similar to what we observe in the second region. The song then finally ends with the C major chord being held again, explaining the strong yellow regions for the other chords. 
 
-This song typifies a song that I personally like that is calming and reflective, and the variations of the intensity of the music is brought out in this chordogram by the intensity of yellow around the major chord progression. It typifies this style of soulful worship music that I enjoy and the reflective personality that my girlfriend shares about me.
+This song typifies a song that I personally like that is calming and reflective, and the variations of the intensity of the music is brought out in this chordogram by the intensity of yellow around the major chord progression. It typifies this style of emotional worship music that brings peace and that I enjoy and my reflective personality, something that my girlfriend tells me I embody.
 
 
 
@@ -227,7 +226,7 @@ The song then builds up before fading, which is depicted in the 1st dimension wh
 This light yet uplifting song is perfect for a study or work session, typifying a song that would pair well with Megan's typical routines at work. For a listener that is at the stage of working life, and especially work from home, Novo Amor's Carry You brilliantly sings a encouraging tone to forge ahead with a day's worth of work
 
 
-### A tale of **two individuals**
+### A tale of **two individuals**: Can music define an individual?
 
 **The Story**
 
