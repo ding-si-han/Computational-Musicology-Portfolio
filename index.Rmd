@@ -1,5 +1,6 @@
 ---
-title: "Relationships Explored: A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs (and its reflection of our personalities)"
+title: "A Data Exploration"
+author: "Ding Si Han | Spring 2022"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
