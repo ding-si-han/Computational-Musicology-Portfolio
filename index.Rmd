@@ -1,13 +1,14 @@
 ---
-title: "A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs (and its reflection of our personalities)"
+title: "A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs"
 author: "Ding Si Han | Spring 2022"
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
     theme: journal
     self_contained: false
-
 ---
+
+
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
