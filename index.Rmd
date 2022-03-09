@@ -3,7 +3,8 @@ title: "Relationships Explored: A Data Exploration of My Girlfriend's and My Spo
 output: 
   flexdashboard::flex_dashboard:
     storyboard: true
-    theme: yeti
+    theme: journal
+    self_contained: false
     
     
 ---
