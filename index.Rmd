@@ -1,27 +1,12 @@
 ---
-title: "A Data Exploration"
+title: "A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs (and its reflection of our personalities)"
 author: "Ding Si Han | Spring 2022"
 output: 
-    flexdashboard::flex_dashboard:
-        storyboard: true
-        theme:
-          version: 4
-          bg: "#101010"
-          fg: "#000000" 
-          primary: "#C70039"
-          navbar-bg: "#C70039"
-          base_font: 
-            google: Sen
-          heading_font:
-            google: Sen
-          code_font:
-            google: 
-              # arguments to sass::font_google() 
-              family: JetBrains Mono
-              local: false
-        self_contained: false
-        smooth_scroll: true
-      
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    theme: journal
+    self_contained: false
+
 ---
 
 ```{r setup, include=FALSE}
@@ -45,7 +30,10 @@ summary(combined_df)
 
 ```
 
-### Reflective music: Deep chordal dive into **Cornerstone**
+
+
+
+### Reflective music: A deep chordal dive into **Cornerstone**
 
 ```{r}
 # Megan's Songs
@@ -186,7 +174,6 @@ The song then falls to a solemn reflective mood, culminating at 270 to 280 secon
 
 This song typifies a song that I personally like that is calming and reflective, and the variations of the intensity of the music is brought out in this chordogram by the intensity of yellow around the major chord progression. It typifies this style of soulful worship music that I enjoy and the reflective personality that my girlfriend shares about me.
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXaQm3ZVg9Z2X?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 
 ### Is there such a thing as work-from-home music: A dive into **Carry You**
@@ -289,7 +276,7 @@ Light rain is an ambient sound track of rain drops that are useful for falling a
 
 ***
 
-Hello World
+Insert Playlist Embedding here (currently still not working)
 
 
 
