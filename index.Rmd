@@ -1,5 +1,5 @@
 ---
-title: "A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs new 1"
+title: "Personalities Explored: A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs"
 author: "Ding Si Han | Spring 2022"
 output: 
   flexdashboard::flex_dashboard:
@@ -166,6 +166,8 @@ twenty_five %>%
 
 ***
 
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/23STcG7v9HNwdqnROFSS8n?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
 Cornerstone is a classic Christian Worship song that reflects a very typical chord progression based around 4 chords. C major, A minor, F major and G major. It is very interesting to observe the chordogram as it can be observed that the song has 5 main sections. The first sections is up til 115 seconds and is marked by a dominant region in the middle of the y-axis signifying the main chord progression that runs through the song. 
 
 However, what is very interesting is the varying degrees of yellow in the rest of the chords for the duration of the song. The first section is marked by a quite a significant shade of yellow. This then fades from 115 to 230 seconds. This is because whilst both the first and second section includes the verse and chorus, the second region builds and incoporates more instruments, especially the electric guitar filler lines which are not in the chord progression, thereby diluting the intensity of the chords.
@@ -218,6 +220,8 @@ bzt %>%
 ```
 
 ***
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0u4rkpmNtgcFxYHepnVF4v?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 Carry You is by one of Megan's favourite artists Novo Amor and for good reason. This song Carry You displays dreamy vibes that builds into a hopeful crescendo towards the end of the song. The start is marked by a metallic ring which dies down, and may be reflected in the yellow fade from the first 20 seconds in the seventh dimension. Of note, this is followed with a flatness represented by the third dimension between 30s to 45s. 
 
@@ -276,13 +280,9 @@ Light rain is an ambient sound track of rain drops that are useful for falling a
 
 ***
 
-Insert Playlist Embedding here (currently still not working), new
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5ZSKhsr61NNYIpWPjLfFCV?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-```{=html}
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXaQm3ZVg9Z2X?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-
-
-```
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0dvRhGMEoCG9s8WA3ATLYd?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 
 
@@ -360,6 +360,8 @@ grid.arrange(chromagram, dtw, ncol = 2)
 
 ***
 
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3BA4y1ENVDOeT7XP82sk09?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
 The Rain Song is one of the interesting audio tracks in the list of songs for the reason that it is the only one without any melody or pitch. That being said, it is quite interesting to observe that the chromagram displays the sounds predominantly at the C pitch. This is likely to be less of an intentional feature, and more of a feature of the frequency of the rain drops corresponding to this pitch.
 
 The Dynamic Time Wrapping also sheds insight into the fact that there are no significant dynamics in the audio track. Instead, it is fairly constant and monotonous, with the exception of the bright line at 140 seconds, which corresponds to a period with a bit more fluctuations in the intensity of rain.
@@ -383,6 +385,8 @@ ggplot(combined_df, aes(valence, instrumentalness, color=mode)) +
 ```
 
 *** 
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3BA4y1ENVDOeT7XP82sk09?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 Here, in the area of valence, we observe that the range of songs span across the whole spectrum to up to 0.8, while mine ranges up to 0.5. This is actually quite an accrurate reflection of our personalities, Megan being an upbeat and cheerful individual, while I am quite a reflective especially with regard to music, which helps to unwind my thoughts and feelings.
 
