@@ -166,7 +166,7 @@ twenty_five %>%
 
 ***
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/23STcG7v9HNwdqnROFSS8n?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/23STcG7v9HNwdqnROFSS8n?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 Cornerstone is a classic Christian Worship song that reflects a very typical chord progression based around 4 chords. C major, A minor, F major and G major. It is very interesting to observe the chordogram as it can be observed that the song has 5 main sections. The first sections is up til 115 seconds and is marked by a dominant region in the middle of the y-axis signifying the main chord progression that runs through the song. 
 
@@ -221,7 +221,8 @@ bzt %>%
 
 ***
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0u4rkpmNtgcFxYHepnVF4v?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0u4rkpmNtgcFxYHepnVF4v?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
 
 Carry You is by one of Megan's favourite artists Novo Amor and for good reason. This song Carry You displays dreamy vibes that builds into a hopeful crescendo towards the end of the song. The start is marked by a metallic ring which dies down, and may be reflected in the yellow fade from the first 20 seconds in the seventh dimension. Of note, this is followed with a flatness represented by the third dimension between 30s to 45s. 
 
@@ -360,7 +361,7 @@ grid.arrange(chromagram, dtw, ncol = 2)
 
 ***
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3BA4y1ENVDOeT7XP82sk09?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3BA4y1ENVDOeT7XP82sk09?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 The Rain Song is one of the interesting audio tracks in the list of songs for the reason that it is the only one without any melody or pitch. That being said, it is quite interesting to observe that the chromagram displays the sounds predominantly at the C pitch. This is likely to be less of an intentional feature, and more of a feature of the frequency of the rain drops corresponding to this pitch.
 
@@ -386,7 +387,7 @@ ggplot(combined_df, aes(valence, instrumentalness, color=mode)) +
 
 *** 
 
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3BA4y1ENVDOeT7XP82sk09?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3BA4y1ENVDOeT7XP82sk09?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 Here, in the area of valence, we observe that the range of songs span across the whole spectrum to up to 0.8, while mine ranges up to 0.5. This is actually quite an accrurate reflection of our personalities, Megan being an upbeat and cheerful individual, while I am quite a reflective especially with regard to music, which helps to unwind my thoughts and feelings.
 
