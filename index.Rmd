@@ -1,5 +1,5 @@
 ---
-title: "A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs"
+title: "A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs new 1"
 author: "Ding Si Han | Spring 2022"
 output: 
   flexdashboard::flex_dashboard:
