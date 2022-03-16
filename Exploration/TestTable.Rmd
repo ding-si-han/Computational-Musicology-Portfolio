@@ -1,0 +1,63 @@
+---
+title: "Personalities Explored: A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs"
+author: "Ding Si Han | Spring 2022"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    theme: journal
+    self_contained: false
+---
+
+
+
+
+### Front Page
+
+<div class="row">
+  <div class="col-md-6" markdown="1">
+  Column 1
+
+**Megan's Songs**
+
+*Typical Songs:*
+
+1. [Black bear](https://open.spotify.com/track/2BuMmK2Yguu6vQf1PJ2xQu?si=b0a95a9035b64ca4)
+2. [Maybe](https://open.spotify.com/track/5tOUTNlLFd5u5xPt3unOVp?si=449cf9c5ff244d50)
+3. [Carry you](https://open.spotify.com/track/0u4rkpmNtgcFxYHepnVF4v?si=08bfe49d1774442e)
+
+The typical songs found in Megan's playlist are indie folk with slow vibes to the songs.
+
+*Atypical Songs*
+
+1. [We’re good](https://open.spotify.com/track/1diS6nkxMQc3wwC4G1j0bh?si=f426a1a347e5402a)
+
+We're good is a song that is unlike the rest of the songs, with louder, faster and more beats to it.
+  </div>
+  <div class="col-md-6" markdown="1">
+
+
+**Si Han's Songs**
+
+*Typical Songs:*
+
+1. [Yet Not I but Through Christ in Me](https://open.spotify.com/track/439tGS9rVbyTjj5SmneD56?si=ee649e2657664910)
+2. [Ta Shuo](https://open.spotify.com/track/632VyMrvhsHIsO4zq9khts?si=bb87253cfc654d1b)
+
+Typical songs in the playlist would include Christian Worship songs and Mandopop songs, which comprise approximately 50% of the playlist each.
+
+*Atypical Songs*
+
+1. [Light Rain](https://open.spotify.com/track/3BA4y1ENVDOeT7XP82sk09?si=bfae484a270d4d00)
+
+Light rain is an ambient sound track of rain drops that are useful for falling asleep. This will be an interesting track to analyse due to the nature of the sounds and there being no distinct pitch of the sounds.
+
+  Column 2
+  </div>
+</div>
+
+
+***
+
+Side bar
+
+
