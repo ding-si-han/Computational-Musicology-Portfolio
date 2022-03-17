@@ -64,15 +64,81 @@ The song starts off with the singer and some simple keys in the background playi
 
 The song progresses to the most intriguing part, where the vocals fade out and a electronic synthesizer or electric guitar enters the scene and the bass drum fades slightly, carrying a more melodic fill which create an air of dreaminess, corresponding to the region from 180 seconds to 235 seconds, where the tempogram becomes diluted again. The synthesizer subsequently fades out, and the bass drums dominance is then reflected in the clear 140 bpm reflected for the rest of the song. 
 
-As a slow paced and calm individual, this song encapsulates Megan's pleasant and gentle demeanor, one that also reflects her as a thoughtful individual. It hit me when writing this how much our musical choices can be reflective of who we are as individuals, and our personalities. Is there a causation in one direction or the other? We may never know, but my bet is that it might be a two way relationship. Our personalities influence what type of music we are drawn to, but more interestingly, the music that we listen to influence the person we become.
+As a slow paced and calm individual, this song encapsulates Megan's pleasant and gentle demeanor, one that also reflects her as a thoughtful individual. It hit me when writing this how much our musical choices can be reflective of who we are as individuals, and our personalities. Is there a causation in the sense that our personality determines the type of music we listen to? Or perhaps could the music we listen to shape the people we become? This answer to this question is for sure not straightforward, and we may never truly know, but my bet is that it may be a two way relationship. Our personalities are likely to influence what type of music we are drawn to, but more interestingly, the music that we listen to influences the person we become.
+
+
+### A tale of **two individuals**: Can music define an individual?
+
+<h2>An exploration into musical preferences</h2>
+
+Someone once said music is the way to speak to the soul. Yet, what makes music so intriguing is how personal each individual's choices are. Some may like rock music while others may prefer classical music. Is this just a personal preference, or does that indicate more than meets the eye about an individual's personality? To find out, I will be comparing my girlfriend, Megan, and my top songs to examine what are some of the similarities and differences. As people with similar personalities yet different hobbies and interests, it will be intriguing to examine where our music choices converge and elements where they differ. Hence, the key research question that I will seek to address is to what extent does our musical preferences encapsulate the differences in our personalities and lifestyle.
+
+Megan prefers more of lo-fi, indie music, especially those with chill vibes, while I often listen to emotional and worshipful music. Hence, it will be interesting to especially examine these features and explore how this reveals more about each of us individuals.
+
+1. Danceability
+2. Valence
+3. Speechiness
+4. Instrumentalness 
+
+Personally, both of us listen to our music primarily on Spotify. In fact, more than 90% of the music that we listen to is on Spotify itself. As a result, this would make the Spotify API and these playlists pretty accurate and representative of our musical tastes. Interestingly, Megan typically listens to music while doing work, while I listen to most of my music during leisure. Hence, this will also open the door to examining if the features of our music can reveal the different motivations for listening to music.
+
+
+
+
+<h2>Songs that we listen to</h2>
+
+<div class="row">
+  <div class="col-md-6" markdown="1">
+<h4>Megan's Songs</h4>
+
+<u>Typical Songs:</u>
+
+1. [Black bear](https://open.spotify.com/track/2BuMmK2Yguu6vQf1PJ2xQu?si=b0a95a9035b64ca4)
+2. [Maybe](https://open.spotify.com/track/5tOUTNlLFd5u5xPt3unOVp?si=449cf9c5ff244d50)
+3. [Carry you](https://open.spotify.com/track/0u4rkpmNtgcFxYHepnVF4v?si=08bfe49d1774442e)
+
+The typical songs found in Megan's playlist are indie folk with slow vibes to the songs.
+
+<u>Atypical Songs:</u>
+
+1. [We’re good](https://open.spotify.com/track/1diS6nkxMQc3wwC4G1j0bh?si=f426a1a347e5402a)
+
+We're good is a song that is unlike the rest of the songs, with louder, faster and more beats to it.
+
+
+
+  </div>
+  <div class="col-md-6" markdown="1">
+<h4>Si Han's Songs</h4>
+
+<u>Typical Songs:</u>
+
+1. [Yet Not I but Through Christ in Me](https://open.spotify.com/track/439tGS9rVbyTjj5SmneD56?si=ee649e2657664910)
+2. [Ta Shuo](https://open.spotify.com/track/632VyMrvhsHIsO4zq9khts?si=bb87253cfc654d1b)
+
+Typical songs in the playlist would include Christian Worship songs and Mandopop songs, which comprise approximately 50% of the playlist each.
+
+<u>Atypical Songs:</u>
+
+1. [Light Rain](https://open.spotify.com/track/3BA4y1ENVDOeT7XP82sk09?si=bfae484a270d4d00)
+
+Light rain is an ambient sound track of rain drops that are useful for falling asleep. This will be an interesting track to analyse due to the nature of the sounds and there being no distinct pitch of the sounds.
+  </div>
+</div>
+
+
+***
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5ZSKhsr61NNYIpWPjLfFCV?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0dvRhGMEoCG9s8WA3ATLYd?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+
+
 
 ### Reflective music: A deep chordal dive into **Cornerstone**
 
 ```{r}
-
-
-
-
 circshift <- function(v, n) {
   if (n == 0) v else c(tail(v, n), head(v, -n))
 }
@@ -197,7 +263,7 @@ Cornerstone is a classic Christian Worship song that reflects a very typical cho
 
 However, what is very interesting is the varying degrees of yellow in the rest of the chords for the duration of the song. The first section is marked by a quite a significant shade of yellow. This then fades from 115 to 230 seconds. This is because whilst both the first and second section includes the verse and chorus, the second region builds and incoporates more instruments, especially the electric guitar filler lines which are not in the chord progression, thereby diluting the intensity of the chords.
 
-The song then falls to a solemn reflective mood, culminating at 270 to 280 seconds, where we hear most of the instrument fades out except the C major chord holding. This is reflected in the strong blue shade in this region, where the chord progression comes out stronger due to the other instrument fading. As the song builds again from 330 to 390 seconds, the yellowness fades again, similar to what we observe in the second region. The song then finally ends with the C major chord being held again, explaining the strong yellow regions for the other chords. 
+The song then falls to a solemn reflective mood, culminating at 270 to 280 seconds, where we hear most of the instrument fades out except the C major chord holding. This is reflected in the strong and distinct blue shade in this region, where the chord progression comes out stronger due to the other instrument fading. As the song builds again from 330 to 390 seconds, the yellowness fades again, similar to what we observe in the second region. The song then finally ends with the C major chord being held again, explaining the strong yellow regions for the other chords. 
 
 This song typifies a song that I personally like that is calming and reflective, and the variations of the intensity of the music is brought out in this chordogram by the intensity of yellow around the major chord progression. It typifies this style of emotional worship music that brings peace and that I enjoy and my reflective personality, something that my girlfriend tells me I embody.
 
@@ -256,69 +322,7 @@ The song then builds up before fading, which is depicted in the 1st dimension wh
 This light yet uplifting song is perfect for a study or work session, typifying a song that would pair well with Megan's typical routines at work. For a listener that is at the stage of working life, and especially work from home, Novo Amor's Carry You brilliantly sings a encouraging tone to forge ahead with a day's worth of work
 
 
-### A tale of **two individuals**: Can music define an individual?
 
-**The Story**
-
-Someone once said music is the way to speak to the soul. Yet, what makes music so intriguing is how personal each individual's choices are. Some may like rock Music while others may prefer classical music. Is this just a personal preference, are does that indicate more than meets the eye about an individual's personality. To find out, I will be comparing my girlfriend, Megan, and my top songs to examine what are some of the similarities and differences. As people with similar personalities yet different hobbies and interests, it will be intriguing to examine where our music choices converge and elements where they differ. Hence, the key research question that I will seek to address is to what extent are our musical preferences different and whether it encapsulate the differences in our personalities and lifestyle.
-
-Megan prefers more of lo-fi, indie music, especially those with chill vibes. I often listen to emotional and worshipful music. Hence, it will be intersting to especially examine these features and explore how this reveals more about each of us individuals.
-
-1. Danceability
-2. Valence
-3. Speechiness
-4. Instrumentalness 
-
-Personally, both of us listen to our music primarily on Spotify. In fact, more than 90% of the music that we listen to is on Spotify itself. As a result, this would make the Spotify API and these playlists pretty accurate and representative of our musical tastes. Interestingly, Megan listens to music while doing work typically, while I listen to most of my music during leisure. Hence, this will also open the door to examining if the features of our music can reveal the different motivations for listening to music.
-
-**Songs that we listen to**
-
-<br/>
-<div class="row">
-  <div class="col-md-6" markdown="1">
-
-
-**Megan's Songs**
-
-*Typical Songs:*
-
-1. [Black bear](https://open.spotify.com/track/2BuMmK2Yguu6vQf1PJ2xQu?si=b0a95a9035b64ca4)
-2. [Maybe](https://open.spotify.com/track/5tOUTNlLFd5u5xPt3unOVp?si=449cf9c5ff244d50)
-3. [Carry you](https://open.spotify.com/track/0u4rkpmNtgcFxYHepnVF4v?si=08bfe49d1774442e)
-
-The typical songs found in Megan's playlist are indie folk with slow vibes to the songs.
-
-*Atypical Songs*
-
-1. [We’re good](https://open.spotify.com/track/1diS6nkxMQc3wwC4G1j0bh?si=f426a1a347e5402a)
-
-We're good is a song that is unlike the rest of the songs, with louder, faster and more beats to it.
-  </div>
-  <div class="col-md-6" markdown="1">
-
-
-**Si Han's Songs**
-
-*Typical Songs:*
-
-1. [Yet Not I but Through Christ in Me](https://open.spotify.com/track/439tGS9rVbyTjj5SmneD56?si=ee649e2657664910)
-2. [Ta Shuo](https://open.spotify.com/track/632VyMrvhsHIsO4zq9khts?si=bb87253cfc654d1b)
-
-Typical songs in the playlist would include Christian Worship songs and Mandopop songs, which comprise approximately 50% of the playlist each.
-
-*Atypical Songs*
-
-1. [Light Rain](https://open.spotify.com/track/3BA4y1ENVDOeT7XP82sk09?si=bfae484a270d4d00)
-
-Light rain is an ambient sound track of rain drops that are useful for falling asleep. This will be an interesting track to analyse due to the nature of the sounds and there being no distinct pitch of the sounds.
-
-  </div>
-</div>
-***
-
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5ZSKhsr61NNYIpWPjLfFCV?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0dvRhGMEoCG9s8WA3ATLYd?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
 
 
@@ -402,7 +406,7 @@ The Rain Song is one of the interesting audio tracks in the list of songs for th
 
 The Dynamic Time Wrapping also sheds insight into the fact that there are no significant dynamics in the audio track. Instead, it is fairly constant and monotonous, with the exception of the bright line at 140 seconds, which corresponds to a period with a bit more fluctuations in the intensity of rain.
 
-This outlier song is a cool find within the haystack of music and one that is unusual not only to my playlist, yet most spotify songs. However, it brings out the fact that Spotify can be a space not only for listening to music, but even routines such as sounds to fall alseep to, as used in my case.
+This outlier song is a cool find within the haystack of music and one that is unusual not only to my playlist, but most Spotify songs. However, it brings out the fact that Spotify can be a space not only for listening to music, but even routines such as sounds to fall alseep to, as used in my case.
 
 
 
@@ -419,14 +423,15 @@ ggplot(combined_df, aes(valence, instrumentalness, color=mode)) +
   geom_text_repel(aes(label=ifelse((instrumentalness>0.85),as.character(name),''))) 
 ```
 
+
 *** 
 
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/3BA4y1ENVDOeT7XP82sk09?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-Here, in the area of valence, we observe that the range of songs span across the whole spectrum to up to 0.8, while mine ranges up to 0.5. This is actually quite an accrurate reflection of our personalities, Megan being an upbeat and cheerful individual, while I am quite a reflective especially with regard to music, which helps to unwind my thoughts and feelings.
+Here, in the area of valence, we observe that the range of songs span across the whole spectrum to up to 0.8, while mine ranges up to 0.5. This is actually quite an accrurate reflection of our personalities, Megan being an upbeat and cheerful individual, while I am typically quite reflective when it comes to music, which helps to unravel my thoughts and feelings.
 
-What is extremely insightful is also the range of the instrumentalness of the songs. Megan's songs again span the whole spectrum, with one significant song being an outlier from the rest: Hollywood. The wide range of instrumentalness reflects that the types of songs she listens to contains both those with voices and those without. This diversity is something that can be contrasted against my songs, which are very low on instrumentalness. This is in line with the genres that I listen to: worship and mandopop songs, which both comes with vocals inside typically.
+What is extremely insightful is also the range of the instrumentalness of the songs. Megan's songs again span the whole spectrum, with one song being an outlier from the rest: Hollywood. The wide range of instrumentalness reflects how the songs she listens to contains some with vocals and others without. This diversity is something that can be contrasted with my songs, which are very low on instrumentalness. This is in line with the genres that I listen to: worship and Mandopop songs, which both typically have vocals accompanying the instrumentation.
 
-One exception to this is the song Light Rain, which is a audio track of rain songs I listen to to fall asleep. Here, we can clearly tell the Spotify API was spot on to indicate a score of near 1.0 on instrumentalness, given that this track has absolutely no vocals inside.
+One exception to this is the song Light Rain, which is a audio track of rain songs I listen to to fall asleep. Here, we can clearly tell the Spotify API was spot on to indicate a score of near 1.0 on instrumentalness, given that this track has absolutely no vocals inside. But as a whole, we see how the Spotify API has accurately characterising our different personalities, with Megan being more upbeat and me being more reflective.
 
 
