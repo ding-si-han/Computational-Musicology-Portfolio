@@ -36,73 +36,176 @@ song_ta_shuo <- "632VyMrvhsHIsO4zq9khts"
 song_cornerstone <- "23STcG7v9HNwdqnROFSS8n"
 ```
 
+```{r}
 
-### A tale of **two individuals**: Can music define an individual?
+library(ggdendro)
+library(tidymodels)
+library(heatmaply) 
 
-<h2>An exploration into musical preferences</h2>
+library(compmus)
 
-Someone once said music is the way to speak to the soul. Yet, what makes music so intriguing is how personal each individual's choices are. Some may like rock music while others may prefer classical music. Is this just a personal preference, or does that indicate more than meets the eye about an individual's personality? To find out, I will be comparing my girlfriend, Megan, and my top songs to examine what are some of the similarities and differences. As people with similar personalities yet different hobbies and interests, it will be intriguing to examine where our music choices converge and elements where they differ. Hence, the key research question that I will seek to address is to what extent does our musical preferences encapsulate the differences in our personalities and lifestyle.
+get_conf_mat <- function(fit) {
+  outcome <- .get_tune_outcome_names(fit)
+  fit %>% 
+    collect_predictions() %>% 
+    conf_mat(truth = outcome, estimate = .pred_class)
+}  
 
-Megan prefers more of lo-fi, indie music, especially those with chill vibes, while I often listen to emotional and worshipful music. Hence, it will be interesting to especially examine these features and explore how this reveals more about each of us individuals.
-
-1. Danceability
-2. Valence
-3. Speechiness
-4. Instrumentalness 
-
-Personally, both of us listen to our music primarily on Spotify. In fact, more than 90% of the music that we listen to is on Spotify itself. As a result, this would make the Spotify API and these playlists pretty accurate and representative of our musical tastes. Interestingly, Megan typically listens to music while doing work, while I listen to most of my music during leisure. Hence, this will also open the door to examining if the features of our music can reveal the different motivations for listening to music.
-
-
-
-
-<h2>Songs that we listen to</h2>
-
-<div class="row">
-  <div class="col-md-6" markdown="1">
-<h4>Megan's Songs</h4>
-
-<u>Typical Songs:</u>
-
-1. [Black bear](https://open.spotify.com/track/2BuMmK2Yguu6vQf1PJ2xQu?si=b0a95a9035b64ca4)
-2. [Maybe](https://open.spotify.com/track/5tOUTNlLFd5u5xPt3unOVp?si=449cf9c5ff244d50)
-3. [Carry you](https://open.spotify.com/track/0u4rkpmNtgcFxYHepnVF4v?si=08bfe49d1774442e)
-
-The typical songs found in Megan's playlist are indie folk with slow vibes to the songs.
-
-<u>Atypical Songs:</u>
-
-1. [We’re good](https://open.spotify.com/track/1diS6nkxMQc3wwC4G1j0bh?si=f426a1a347e5402a)
-
-We're good is a song that is unlike the rest of the songs, with louder, faster and more beats to it.
+get_pr <- function(fit) {
+  fit %>% 
+    conf_mat_resampled() %>% 
+    group_by(Prediction) %>% mutate(precision = Freq / sum(Freq)) %>% 
+    group_by(Truth) %>% mutate(recall = Freq / sum(Freq)) %>% 
+    ungroup() %>% filter(Prediction == Truth) %>% 
+    select(class = Prediction, precision, recall)
+}  
 
 
 
-  </div>
-  <div class="col-md-6" markdown="1">
-<h4>Si Han's Songs</h4>
 
-<u>Typical Songs:</u>
-
-1. [Yet Not I but Through Christ in Me](https://open.spotify.com/track/439tGS9rVbyTjj5SmneD56?si=ee649e2657664910)
-2. [Ta Shuo](https://open.spotify.com/track/632VyMrvhsHIsO4zq9khts?si=bb87253cfc654d1b)
-
-Typical songs in the playlist would include Christian Worship songs and Mandopop songs, which comprise approximately 50% of the playlist each.
-
-<u>Atypical Songs:</u>
-
-1. [Light Rain](https://open.spotify.com/track/3BA4y1ENVDOeT7XP82sk09?si=bfae484a270d4d00)
-
-Light rain is an ambient sound track of rain drops that are useful for falling asleep. This will be an interesting track to analyse due to the nature of the sounds and there being no distinct pitch of the sounds.
-  </div>
-</div>
+megan <- 
+  get_playlist_audio_features("spotify", "5ZSKhsr61NNYIpWPjLfFCV")
+sihan <- get_playlist_audio_features("spotify", "0dvRhGMEoCG9s8WA3ATLYd")
+indie <-
+  bind_rows(
+    megan %>% mutate(playlist = "Megan") %>% slice_head(n = 50),
+    sihan %>% mutate(playlist = "Si Han") %>% slice_head(n = 50)
+  ) 
 
 
-***
 
-Text 1
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/5ZSKhsr61NNYIpWPjLfFCV?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
 
-*** 
 
-Text 2
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/0dvRhGMEoCG9s8WA3ATLYd?utm_source=generator" width="100%" height="380" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+indie_features <-
+  indie %>%  # For your portfolio, change this to the name of your corpus.
+  add_audio_analysis() %>% 
+  mutate(
+    playlist = factor(playlist),
+    segments = map2(segments, key, compmus_c_transpose),
+    pitches =
+      map(
+        segments,
+        compmus_summarise, pitches,
+        method = "mean", norm = "manhattan"
+      ),
+    timbre =
+      map(
+        segments,
+        compmus_summarise, timbre,
+        method = "mean",
+      )
+  ) %>%
+  mutate(pitches = map(pitches, compmus_normalise, "clr")) %>%
+  mutate_at(vars(pitches, timbre), map, bind_rows) %>%
+  unnest(cols = c(pitches, timbre))
+
+
+
+
+
+
+
+indie_recipe <-
+  recipe(
+    playlist ~
+      danceability +
+      energy +
+      loudness +
+      speechiness +
+      acousticness +
+      instrumentalness +
+      liveness +
+      valence +
+      tempo +
+      duration +
+      C + `C#|Db` + D + `D#|Eb` +
+      E + `F` + `F#|Gb` + G +
+      `G#|Ab` + A + `A#|Bb` + B +
+      c01 + c02 + c03 + c04 + c05 + c06 +
+      c07 + c08 + c09 + c10 + c11 + c12,
+    data = indie_features,          # Use the same name as the previous block.
+  ) %>%
+  step_center(all_predictors()) %>%
+  step_scale(all_predictors())      # Converts to z-scores.
+
+
+
+
+
+indie_cv <- indie_features %>% vfold_cv(5)
+
+
+
+knn_model <-
+  nearest_neighbor(neighbors = 1) %>%
+  set_mode("classification") %>% 
+  set_engine("kknn")
+indie_knn <- 
+  workflow() %>% 
+  add_recipe(indie_recipe) %>% 
+  add_model(knn_model) %>% 
+  fit_resamples(
+    indie_cv, 
+    control = control_resamples(save_pred = TRUE)
+  )
+
+
+indie_knn %>% get_conf_mat()
+
+
+
+indie_knn %>% get_conf_mat() %>% autoplot(type = "mosaic")
+indie_knn %>% get_conf_mat() %>% autoplot(type = "heatmap")
+indie_knn %>% get_pr()
+
+
+```
+
+
+
+# Random Forest
+```{r}
+forest_model <-
+  rand_forest() %>%
+  set_mode("classification") %>% 
+  set_engine("ranger", importance = "impurity")
+indie_forest <- 
+  workflow() %>% 
+  add_recipe(indie_recipe) %>% 
+  add_model(forest_model) %>% 
+  fit_resamples(
+    indie_cv, 
+    control = control_resamples(save_pred = TRUE)
+  )
+
+indie_forest %>% get_pr()
+
+workflow() %>% 
+  add_recipe(indie_recipe) %>% 
+  add_model(forest_model) %>% 
+  fit(indie_features) %>% 
+  pluck("fit", "fit", "fit") %>%
+  ranger::importance() %>% 
+  enframe() %>% 
+  mutate(name = fct_reorder(name, value)) %>% 
+  ggplot(aes(name, value)) + 
+  geom_col() + 
+  coord_flip() +
+  theme_minimal() +
+  labs(x = NULL, y = "Importance")
+
+```
+
+
+```{r}
+indie_features %>%
+  ggplot(aes(x = instrumentalness, y = duration, colour = playlist, size = energy)) +
+  geom_point(alpha = 0.8) +
+  scale_color_viridis_d() +
+  labs(
+    x = "Instrumentalness",
+    y = "Duration",
+    size = "Energy",
+    colour = "Playlist"
+  )
+```

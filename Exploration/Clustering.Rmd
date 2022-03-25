@@ -1,0 +1,102 @@
+---
+title: "Personalities Explored: A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs"
+author: "Ding Si Han | Spring 2022"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    theme: journal
+    self_contained: false
+    vertical_layout: fill
+---
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggrepel)
+library(ggthemes)
+library(tidyverse)
+library(compmus)
+library(gridExtra)
+library(spotifyr)
+library(plotly)
+
+sihan_df <- read.csv(file="../data/sihan.csv")
+megan_df <- read.csv(file="../data/megan.csv")
+
+combined_df <- rbind(sihan_df, megan_df)
+combined_df$mode <- as.factor(combined_df$mode)
+summary(combined_df)
+
+# Megan's Songs
+song_black_bear <- "2BuMmK2Yguu6vQf1PJ2xQu"
+song_maybe <- "5tOUTNlLFd5u5xPt3unOVp"
+song_carry_you <- "0u4rkpmNtgcFxYHepnVF4v"
+
+# Si Han's Songs
+song_yet_not_i <- "439tGS9rVbyTjj5SmneD56"
+song_ta_shuo <- "632VyMrvhsHIsO4zq9khts"
+song_cornerstone <- "23STcG7v9HNwdqnROFSS8n"
+```
+
+```{r} 
+halloween <-
+  get_playlist_audio_features("bnfcollection", "0dvRhGMEoCG9s8WA3ATLYd") %>%
+  add_audio_analysis() %>%
+  mutate(
+    segments = map2(segments, key, compmus_c_transpose),
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "mean", norm = "manhattan"
+      ),
+    timbre =
+      map(
+        segments,
+        compmus_summarise, timbre,
+        method = "mean"
+      )
+  ) %>%
+  mutate(pitches = map(pitches, compmus_normalise, "clr")) %>%
+  mutate_at(vars(pitches, timbre), map, bind_rows) %>%
+  unnest(cols = c(pitches, timbre))
+
+
+
+halloween_juice <-
+  recipe(
+    track.name ~
+      danceability +
+      energy +
+      loudness +
+      speechiness +
+      acousticness +
+      instrumentalness +
+      liveness +
+      valence +
+      tempo +
+      duration +
+      C + `C#|Db` + D + `D#|Eb` +
+      E + `F` + `F#|Gb` + G +
+      `G#|Ab` + A + `A#|Bb` + B +
+      c01 + c02 + c03 + c04 + c05 + c06 +
+      c07 + c08 + c09 + c10 + c11 + c12,
+    data = halloween
+  ) %>%
+  step_center(all_predictors()) %>%
+  step_scale(all_predictors()) %>% 
+  # step_range(all_predictors()) %>% 
+  prep(halloween %>% mutate(track.name = str_trunc(track.name, 20))) %>%
+  juice() %>%
+  column_to_rownames("track.name")
+
+
+
+halloween_dist <- dist(halloween_juice, method = "euclidean")
+
+
+
+
+halloween_dist %>% 
+  hclust(method = "complete") %>% # Try single, average, and complete.
+  dendro_data() %>%
+  ggdendrogram()
+
+```
