@@ -1,0 +1,52 @@
+---
+title: "Personalities Explored: A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs"
+author: "Ding Si Han | Spring 2022"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    theme: journal
+    self_contained: false
+    vertical_layout: fill
+---
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggrepel)
+library(ggthemes)
+library(tidyverse)
+library(compmus)
+library(gridExtra)
+library(spotifyr)
+library(plotly)
+
+sihan_df <- read.csv(file="../data/sihan.csv")
+megan_df <- read.csv(file="../data/megan.csv")
+
+combined_df <- rbind(sihan_df, megan_df)
+combined_df$mode <- as.factor(combined_df$mode)
+summary(combined_df)
+
+# Megan's Songs
+song_black_bear <- "2BuMmK2Yguu6vQf1PJ2xQu"
+song_maybe <- "5tOUTNlLFd5u5xPt3unOVp"
+song_carry_you <- "0u4rkpmNtgcFxYHepnVF4v"
+
+# Si Han's Songs
+song_yet_not_i <- "439tGS9rVbyTjj5SmneD56"
+song_ta_shuo <- "632VyMrvhsHIsO4zq9khts"
+song_cornerstone <- "23STcG7v9HNwdqnROFSS8n"
+```
+
+
+```{r}
+
+
+black_bear <- get_tidy_audio_analysis(song_black_bear)
+black_bear %>%
+  tempogram(window_size = 8, hop_size = 1, cyclic = TRUE) %>%
+  ggplot(aes(x = time, y = bpm, fill = power)) +
+  geom_raster() +
+  scale_fill_viridis_c(guide = "none") +
+  labs(x = "Time (s)", y = "Tempo (BPM)", title="Tempogram of Black Bear") +
+  theme_classic()
+
+```
