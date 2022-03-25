@@ -1,0 +1,105 @@
+---
+title: "Personalities Explored: A Data Exploration of My Girlfriend's and My Spotify Top 50 Songs"
+author: "Ding Si Han | Spring 2022"
+output: 
+  flexdashboard::flex_dashboard:
+    storyboard: true
+    theme: journal
+    self_contained: false
+    vertical_layout: fill
+---
+```{r setup, include=FALSE}
+library(flexdashboard)
+library(ggrepel)
+library(ggthemes)
+library(tidyverse)
+library(compmus)
+library(gridExtra)
+library(spotifyr)
+library(plotly)
+
+sihan_df <- read.csv(file="../data/sihan.csv")
+megan_df <- read.csv(file="../data/megan.csv")
+
+combined_df <- rbind(sihan_df, megan_df)
+combined_df$mode <- as.factor(combined_df$mode)
+summary(combined_df)
+
+# Megan's Songs
+song_black_bear <- "2BuMmK2Yguu6vQf1PJ2xQu"
+song_maybe <- "5tOUTNlLFd5u5xPt3unOVp"
+song_carry_you <- "0u4rkpmNtgcFxYHepnVF4v"
+
+# Si Han's Songs
+song_yet_not_i <- "439tGS9rVbyTjj5SmneD56"
+song_ta_shuo <- "632VyMrvhsHIsO4zq9khts"
+song_cornerstone <- "23STcG7v9HNwdqnROFSS8n"
+```
+
+
+```{r}
+
+light_rain = "439tGS9rVbyTjj5SmneD56"
+yet_not_i = "439tGS9rVbyTjj5SmneD56"
+shuo_hao_bu_ku = "56wVfJKtnwlSZtC4NVgIrf"
+
+wood <-
+  get_tidy_audio_analysis(light_rain) %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+
+wood %>%
+  mutate(pitches = map(pitches, compmus_normalise, "chebyshev")) %>%
+  compmus_gather_chroma() %>% 
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = pitch_class,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(title="Chromagram of Light Rain", x = "Time (s)", y = NULL, fill = "Magnitude") +
+  theme_minimal() +
+  scale_fill_viridis_c()
+```
+
+```{r}
+## The Tallis Scholars
+tallis <-
+  get_tidy_audio_analysis("3BA4y1ENVDOeT7XP82sk09") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+## La Chapelle Royale
+chapelle <-
+  get_tidy_audio_analysis("3BA4y1ENVDOeT7XP82sk09") %>%
+  select(segments) %>%
+  unnest(segments) %>%
+  select(start, duration, pitches)
+
+compmus_long_distance(
+  tallis %>% mutate(pitches = map(pitches, compmus_normalise, "euclidean")),
+  chapelle %>% mutate(pitches = map(pitches, compmus_normalise, "euclidean")),
+  feature = pitches,
+  method = "euclidean"
+) %>%
+  ggplot(
+    aes(
+      x = xstart + xduration / 2,
+      width = xduration,
+      y = ystart + yduration / 2,
+      height = yduration,
+      fill = d
+    )
+  ) +
+  geom_tile() +
+  coord_equal() +
+  labs(title="Self-Similarity of Light Rain", x = "Light Rain", y = "Light Rain") +
+  theme_minimal() +
+  scale_fill_viridis_c(guide = NULL)
+
+
+```
