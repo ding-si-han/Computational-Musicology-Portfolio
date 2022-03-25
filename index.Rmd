@@ -409,7 +409,8 @@ ggplot(combined_df, aes(valence, instrumentalness, color=mode)) +
   facet_wrap(~listener) +
   scale_color_manual(labels = c("Minor", "Major"), values = c("red", "blue")) +
 # geom_text(aes(x=0.14, label=ifelse((instrumentalness>0.5),as.character(name),'')))
-  geom_text_repel(aes(label=ifelse((instrumentalness>0.85),as.character(name),''))) 
+  geom_text_repel(aes(label=ifelse((instrumentalness>0.85),as.character(name),''))) +
+  labs(x = "Valence", y = "Instrumentalness", title="Analysis of Valence and Instrumentalness of Megan and Si Han's Playlists") 
 ```
 
 
@@ -427,19 +428,7 @@ One exception to this is the song Light Rain, which is a audio track of rain son
 
 ### What **Black Bear** can teach us: Does the music we listen reflect our personality?
 
-```{r}
-
-
-black_bear <- get_tidy_audio_analysis(song_black_bear)
-black_bear %>%
-  tempogram(window_size = 8, hop_size = 1, cyclic = TRUE) %>%
-  ggplot(aes(x = time, y = bpm, fill = power)) +
-  geom_raster() +
-  scale_fill_viridis_c(guide = "none") +
-  labs(x = "Time (s)", y = "Tempo (BPM)", title="Tempogram of Black Bear") +
-  theme_classic()
-
-```
+![Tempogram of Black Bear](./Images/tempogram.png)
 
 ***
 <iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/2BuMmK2Yguu6vQf1PJ2xQu?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
