@@ -107,6 +107,67 @@ Light rain is an ambient sound track of rain drops that are useful for falling a
 
 
 
+
+
+
+### Is there such a thing as work-from-home music: A dive into **Carry You**
+```{r}
+
+
+
+bzt <-
+  get_tidy_audio_analysis(song_carry_you) %>% # Change URI.
+  compmus_align(bars, segments) %>%                     # Change `bars`
+  select(bars) %>%                                      #   in all three
+  unnest(bars) %>%                                      #   of these lines.
+  mutate(
+    pitches =
+      map(segments,
+        compmus_summarise, pitches,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  ) %>%
+  mutate(
+    timbre =
+      map(segments,
+        compmus_summarise, timbre,
+        method = "rms", norm = "euclidean"              # Change summary & norm.
+      )
+  )
+
+bzt %>%
+  compmus_gather_timbre() %>%
+  ggplot(
+    aes(
+      x = start + duration / 2,
+      width = duration,
+      y = basis,
+      fill = value
+    )
+  ) +
+  geom_tile() +
+  labs(title="Timbre of Carry You by Novo Amor", x = "Time (s)", y = NULL, fill = "Magnitude") +
+  scale_fill_viridis_c() +                              
+  theme_classic()
+```
+
+***
+
+<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0u4rkpmNtgcFxYHepnVF4v?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
+
+
+Carry You is by one of Megan's favourite artists Novo Amor and for good reason. This song Carry You displays dreamy vibes that builds into a hopeful crescendo towards the end of the song. The start is marked by a metallic ring which dies down, and may be reflected in the yellow fade from the first 20 seconds in the seventh dimension. Of note, this is followed with a flatness represented by the third dimension between 30s to 45s. 
+
+The song then builds up before fading, which is depicted in the 1st dimension which represents loudness. This wave like fluctuation between 50s to 140s creates an air of floatiness and creates the ideas of possibilities. This then builds to a sudden high pulsating volumes at 150s to 160s which uplifts the listeners and sends hopes the our hearts. This high volumes then sustains to build the positivity within the listen before a gentle slow and fade away. 
+
+This light yet uplifting song is perfect for a study or work session, typifying a song that would pair well with Megan's typical routines at work. For a listener that is at the stage of working life, and especially work from home, Novo Amor's Carry You brilliantly sings a encouraging tone to forge ahead with a day's worth of work
+
+
+
+
+
+
+
 ### Reflective music: A deep chordal dive into **Cornerstone**
 
 ```{r}
@@ -240,64 +301,6 @@ This song typifies a song that I personally like that is calming and reflective,
 
 
 
-### Is there such a thing as work-from-home music: A dive into **Carry You**
-```{r}
-
-
-
-bzt <-
-  get_tidy_audio_analysis(song_carry_you) %>% # Change URI.
-  compmus_align(bars, segments) %>%                     # Change `bars`
-  select(bars) %>%                                      #   in all three
-  unnest(bars) %>%                                      #   of these lines.
-  mutate(
-    pitches =
-      map(segments,
-        compmus_summarise, pitches,
-        method = "rms", norm = "euclidean"              # Change summary & norm.
-      )
-  ) %>%
-  mutate(
-    timbre =
-      map(segments,
-        compmus_summarise, timbre,
-        method = "rms", norm = "euclidean"              # Change summary & norm.
-      )
-  )
-
-bzt %>%
-  compmus_gather_timbre() %>%
-  ggplot(
-    aes(
-      x = start + duration / 2,
-      width = duration,
-      y = basis,
-      fill = value
-    )
-  ) +
-  geom_tile() +
-  labs(title="Timbre of Carry You by Novo Amor", x = "Time (s)", y = NULL, fill = "Magnitude") +
-  scale_fill_viridis_c() +                              
-  theme_classic()
-```
-
-***
-
-<iframe style="border-radius:12px" src="https://open.spotify.com/embed/track/0u4rkpmNtgcFxYHepnVF4v?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"></iframe>
-
-
-Carry You is by one of Megan's favourite artists Novo Amor and for good reason. This song Carry You displays dreamy vibes that builds into a hopeful crescendo towards the end of the song. The start is marked by a metallic ring which dies down, and may be reflected in the yellow fade from the first 20 seconds in the seventh dimension. Of note, this is followed with a flatness represented by the third dimension between 30s to 45s. 
-
-The song then builds up before fading, which is depicted in the 1st dimension which represents loudness. This wave like fluctuation between 50s to 140s creates an air of floatiness and creates the ideas of possibilities. This then builds to a sudden high pulsating volumes at 150s to 160s which uplifts the listeners and sends hopes the our hearts. This high volumes then sustains to build the positivity within the listen before a gentle slow and fade away. 
-
-This light yet uplifting song is perfect for a study or work session, typifying a song that would pair well with Megan's typical routines at work. For a listener that is at the stage of working life, and especially work from home, Novo Amor's Carry You brilliantly sings a encouraging tone to forge ahead with a day's worth of work
-
-
-
-
-
-
-
 
 
 ### Why a boring song exists: analysis of a **strange outlier**
@@ -312,7 +315,7 @@ The Rain Song is one of the interesting audio tracks in the list of songs for th
 
 The Dynamic Time Warping and Self-Similarity Matrix also sheds insight into the fact that there are no significant dynamics in the audio track. Instead, it is fairly constant and monotonous, with the exception of the bright line at 140 seconds, which corresponds to a period with a bit more fluctuations in the intensity of rain.
 
-This outlier song is a cool find within the haystack of music and one that is unusual not only to my playlist, but most Spotify songs. However, it brings out the fact that Spotify can be a space not only for listening to music, but even routines such as sounds to fall alseep to, as used in my case.
+This outlier song is a interesting find within the haystack of music and one that is unusual not only to my playlist, but most Spotify songs. However, it brings out the fact that Spotify can be a space not only for listening to music, but even routines such as sounds to fall alseep to.
 
 
 
@@ -322,7 +325,7 @@ This outlier song is a cool find within the haystack of music and one that is un
 
 ```{r}
 ggplot(combined_df, aes(valence, instrumentalness, color=mode)) +
-  geom_point() +
+  geom_point(aes(alpha=0.1)) +
   facet_wrap(~listener) +
   scale_color_manual(labels = c("Minor", "Major"), values = c("red", "blue")) +
 # geom_text(aes(x=0.14, label=ifelse((instrumentalness>0.5),as.character(name),'')))
@@ -341,7 +344,7 @@ Here, in the area of valence, we observe that the range of songs span across the
 
 What is extremely insightful is also the range of the instrumentalness of the songs. Megan's songs again span the whole spectrum, with one song being an outlier from the rest: Hollywood. The wide range of instrumentalness reflects how the songs she listens to contains some with vocals and others without. This diversity is something that can be contrasted with my songs, which are very low on instrumentalness. This is in line with the genres that I listen to: worship and Mandopop songs, which both typically have vocals accompanying the instrumentation.
 
-One exception to this is the song Light Rain, which is a audio track of rain songs I listen to to fall asleep. Here, we can clearly tell the Spotify API was spot on to indicate a score of near 1.0 on instrumentalness, given that this track has absolutely no vocals inside. But as a whole, we see how the Spotify API has accurately characterising our different personalities, with Megan being more upbeat and me being more reflective.
+One exception to this is the song Light Rain, which is a audio track of rain songs I listen to to fall asleep. Here, we can clearly tell the Spotify API was spot on to indicate a score of near 1.0 on instrumentalness, given that this track has absolutely no vocals inside. As a whole, we see how the Spotify API has accurately characterising our different personalities, with Megan being more upbeat and me being more reflective.
 
 ### What **Black Bear** can teach us: Does the music we listen reflect our personality?
 
@@ -355,10 +358,7 @@ Black Bear by Andrew Belle is one of Megan's favourite songs, and one that is ty
 
 The song starts off with the singer and some simple keys in the background playing long drawn chords which creates a slow-paced atmosphere. After the first 14 seconds, the bass drum enters the scene, which is accompanied with an alternating clapping sound. Although the tempogram displays a tempo of 140 bpm, the alternating bass drum and clapping sound alternate hit at the frequency of every 2 beats, thereby effectively creating a tempo of 70 bpm. What is very interesting about the tempogram is the contrast we observe from the first 14 seconds to after the bass drum enters, whereby before we see a dilution of yellow across the y-axis, reflecting that there is not a clear tempo detected by the algorithm. In contrast, we observe a very distinct line after the bass drum and clapping sounds enter, reflecting how this creates a very clear rhythm for the rest of the musical elements to align. 
 
-The song progresses to the most intriguing part, where the vocals fade out and a electronic synthesizer or electric guitar enters the scene and the bass drum fades slightly, carrying a more melodic fill which create an air of dreaminess, corresponding to the region from 180 seconds to 235 seconds, where the tempogram becomes diluted again. The synthesizer subsequently fades out, and the bass drums dominance is then reflected in the clear 140 bpm reflected for the rest of the song. 
-
-As a slow paced and calm individual, this song encapsulates Megan's pleasant and gentle demeanor, one that also reflects her as a thoughtful individual. It hit me when writing this how much our musical choices can be reflective of who we are as individuals, and our personalities. Is there a causation in the sense that our personality determines the type of music we listen to? Or perhaps could the music we listen to shape the people we become? This answer to this question is for sure not straightforward, and we may never truly know, but my bet is that it may be a two way relationship. Our personalities are likely to influence what type of music we are drawn to, but more interestingly, the music that we listen to influences the person we become.
-
+The song progresses to the most intriguing part, where the vocals fade out and a electronic synthesizer or electric guitar enters the scene and the bass drum fades slightly, carrying a more melodic fill which create an air of dreaminess, corresponding to the region from 180 seconds to 235 seconds, where the tempogram becomes diluted again. The synthesizer subsequently fades out, and the bass drums dominance is then reflected in the clear 140 bpm reflected for the rest of the song. As a slow paced and calm individual, this song encapsulates Megan's pleasant and gentle demeanor, one that also reflects her as a thoughtful individual. 
 
 
 ### A **divisive world**? What clustering can teach us about music and more
@@ -394,4 +394,5 @@ ggplotly(p)
 
 From the boxplot of the loudness of Megan and myself, it is immediately noticeable that the median loudness of Megan's music is lower than mine. This is further corroborated by the boxplot, which in general depicts a lower quartiles, maximum and minimum for our loudness of our her playlist. This may come as a surprise given that she oftens says that I am the more reflective individual of the two of us. However, it makes sense in the light of the genres and how she listens to music while working as background music, which tends towards softer songs that do not distract her from her work. 
 
-It's interesting to observe how different people listen to music for different reasons. For Megan, music is a companion to her work, and for me it is a source of recreation and relaxation. On a whole, this portfolio has taught me how music can characterise who we are, that the music we listen to can be a reflection of who we are as individuals, but more significantly, the music we listen to can also possibly mould us into the people we become. It grows on me how we typically see music as something that defines our culture, but when we look beyond our differences such as language and lyrics, music can actually unite us as fellow human beings.
+It's interesting to observe how different people listen to music for different reasons. For Megan, music is a companion to her work, and for me it is a source of recreation and relaxation. It hit me when writing this how much our musical choices can be reflective of who we are as individuals, and our personalities. Is there a causation in the sense that our personality determines the type of music we listen to? Or perhaps could the music we listen to shape the people we become? This answer to this question is for sure not straightforward, and we may never truly know, but my bet is that it may be a two way relationship. Our personalities are likely to influence what type of music we are drawn to, but more interestingly, the music that we listen to influences the person we become. It increasingly opens my eye to how we typically see music as something that defines our culture, but when we look beyond our differences such as language and lyrics, music can actually unite us as fellow human beings.
+
