@@ -96,12 +96,25 @@ halloween_juice <-
 halloween_dist <- dist(halloween_juice, method = "euclidean")
 
 
+```
 
-
+```{r}
 halloween_dist %>% 
   hclust(method = "complete") %>% # Try single, average, and complete.
   dendro_data() %>%
   ggdendrogram() + 
   labs(title = "Dendrogram of Si Han's Playlist")
 
+```
+
+```{r}
+ v = "hello文"
+
+function checkIfChinese(v)
+if (identical(nchar(grep("[\\p{Han}]", v, value = T, perl = T)), integer(0))) {
+  return 1
+} else {
+  print("has chinese")
+}
+  
 ```
